@@ -1,0 +1,17 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "a backend project",
+  "keywords": [
+    "javascript",
+    "backend"
+  ],
+  
+  "license": "ISC",
+  "author": "Om Shivhare",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start":""
+  }
+}
