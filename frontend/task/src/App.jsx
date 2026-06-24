@@ -1,22 +1,14 @@
-import React from 'react'
 
-const App = () => {
+import './App.css'
+
+function App() {
+  
+
   return (
-    <div></div>
+    <>
+      
+    </>
   )
 }
 
 export default App
-// import './App.css'
-
-// function App() {
-  
-
-//   return (
-//     <>
-      
-//     </>
-//   )
-// }
-
-// export default App

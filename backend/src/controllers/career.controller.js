@@ -1,4 +1,5 @@
 const Career = require("../models/career.model");
+const Application = require('../models/application.model');
 
 const getAllCareers = async (req, res) => {
     try{
@@ -8,12 +9,13 @@ const getAllCareers = async (req, res) => {
         if( department )query.department = department;
         if( type ) query.type = type;
 
-        const careers = (await Career.find(query)).toSorted({ createdAt: -1 });
+        const careers = await Career.find(query).sort({ createdAt: -1 });
 
         return res.status(200).json({
             careers
         });
     }catch(err){
+        console.log("getcareer error : ", err);
         return res.status(500).json({
             message: "server error"
         });
@@ -50,7 +52,7 @@ const applyForCareer = async (req, res) => {
             })
         }
 
-        const resumeUrl = req.file?.location;
+        const { resumeUrl } = req.body;
             if (!resumeUrl) {
                 return res.status(400).json({ message: 'Resume is required' });
             }      
@@ -83,4 +85,54 @@ const createCareer = async (req, res) => {
         }
 };
 
-module.exports = { applyForCareer, getAllCareers, createCareer, getCareerById };
+const updateCareer = async (req, res) => {
+  try {
+    const career = await Career.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+    if (!career) return res.status(404).json({ message: 'Career not found' });
+    return res.status(200).json({ message: 'Career updated', career });
+  } catch (err) {
+    return res.status(500).json({ message: 'Server error' });
+  }
+};
+
+const deleteCareer = async (req, res) => {
+  try {
+    const career = await Career.findByIdAndDelete(req.params.id);
+    if (!career) return res.status(404).json({ message: 'Career not found' });
+    // Also delete all related applications
+    await Application.deleteMany({ career: req.params.id });
+    return res.status(200).json({ message: 'Career and its applications deleted' });
+  } catch (err) {
+    return res.status(500).json({ message: 'Server error' });
+  }
+};
+
+const getApplicationsByCareer = async (req, res) => {
+  try {
+    const { status } = req.query;
+    const query = { career: req.params.id };
+    if (status) query.status = status;
+ 
+    const applications = await Application.find(query).sort({ createdAt: -1 });
+    return res.status(200).json({ applications });
+  } catch (err) {
+    return res.status(500).json({ message: 'Server error' });
+  }
+};
+
+const updateApplicationStatus = async (req, res) => {
+  try {
+    const { status, adminNote } = req.body;
+    const application = await Application.findByIdAndUpdate(
+      req.params.id,
+      { status, adminNote },
+      { new: true, runValidators: true }
+    );
+    if (!application) return res.status(404).json({ message: 'Application not found' });
+    return res.status(200).json({ message: 'Status updated', application });
+  } catch (err) {
+    return res.status(500).json({ message: 'Server error' });
+  }
+};
+
+module.exports = { applyForCareer, getAllCareers, createCareer, getCareerById, updateCareer, deleteCareer, getApplicationsByCareer, updateApplicationStatus };
