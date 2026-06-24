@@ -3,6 +3,7 @@ const userModel = require('../models/user.model');
 const bcrypt = require('bcrypt');
 
 async function registerUser(req, res){
+    try{
     const { email, password, username, name } = req.body;
 
     const exist = await userModel.findOne({
@@ -26,16 +27,23 @@ async function registerUser(req, res){
 
     const token = jwt.sign({
         id : user._id
-},process.env.JWT_SECRET_KEY);
+    },process.env.JWT_SECRET_KEY);
 
     res.cookie('token', token);
 
     return res.status(200).json({
         message:"User registered successfully"
     })
+    }catch(err){
+    console.log("Registration error", err);
+    return res.status(500).json({
+        message:"Internal server error"
+    })
+}
 }
 
 async function loginUser(req, res){
+    try{
     const{ email, password, username, name } = req.body;
 
     const user = await userModel.findOne({
@@ -68,7 +76,17 @@ async function loginUser(req, res){
     return res.status(200).json({
         message: "Login successful"
     });
-
+}catch(err){
+    console.log("login error: ", err);
+    return res.status(500).json("Internal server error")
 }
 
-module.exports= { registerUser, loginUser };
+}
+async function logoutUser(req, res) {
+    res.clearCookie('token', token);
+    return res.status(200).json({
+        message: "Logged out successfully"
+    })
+}
+
+module.exports= { registerUser, loginUser, logoutUser };
