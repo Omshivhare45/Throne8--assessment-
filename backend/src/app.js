@@ -2,11 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const app = express();
-const authRoutes = require('./routes/auth.routes');
 const cookieParser = require('cookie-parser');
+
+const authRoutes = require('./routes/auth.routes');
 const blogRoutes = require('../src/routes/blog.routes');
 const projectRoutes = require('../src/routes/project.routes');
-
+const careerRoutes = require('../src/routes/career.routes');
+ 
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true}));
@@ -19,5 +21,6 @@ app.use(cors({
 app.use('/api/auth/', authRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use('/api/projects', projectRoutes);
+app.use('/api/careers', careerRoutes);
 
 module.exports = app;
