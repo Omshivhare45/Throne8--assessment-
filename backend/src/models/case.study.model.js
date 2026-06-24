@@ -7,14 +7,7 @@ const caseeStudySchema = new mongoose.Schema(
             required: [true, 'Title is required'],
             trim: true
         },
-        industry: {
-            type:String,
-            trim: true
-        },
-        clientName:  {
-            type:String,
-            trim: true
-        },challenge: {
+        challenge: {
             type: String,
             required: [true, 'Challenge description is required'],
         },
@@ -40,6 +33,14 @@ const caseeStudySchema = new mongoose.Schema(
             enum: ['draft', 'published'],
             default: 'draft',
         },
+        performanceMetrics: {
+            revenueGrowth: Number,
+            userRetention: Number,
+            conversionRate: Number,
+            customerSatisfaction: Number,
+            responseTime: Number,
+            uptime: Number
+  }
     },
         
     { timestamps: true }

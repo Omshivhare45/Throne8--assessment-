@@ -1,0 +1,14 @@
+const express = require('express');
+const {
+  getAllBlogs, getBlogBySlug,
+  createBlog, updateBlog, deleteBlog, adminGetAllBlogs,
+} = require('../controllers/blog.controller');
+
+
+const router = express.Router();
+
+router.get('/',      getAllBlogs);
+router.get('/:slug', getBlogBySlug);
+
+
+module.exports = router;

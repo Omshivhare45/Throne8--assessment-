@@ -4,6 +4,7 @@ const helmet = require('helmet');
 const app = express();
 const authRoutes = require('./routes/auth.routes');
 const cookieParser = require('cookie-parser');
+const BlogRoutes = require('../src/routes/blog.routes');
 
 app.use(express.json());
 app.use(cookieParser());
@@ -15,5 +16,6 @@ app.use(cors({
 }))
 
 app.use('/api/auth/', authRoutes);
+app.use("/api/blogs", BlogRoutes)
 
 module.exports = app;
