@@ -1,4 +1,4 @@
-const blog =require('../models/blog.model');
+const Blog = require('../models/blog.model');
 const slugify = require('slugify');
 
 const getAllBlogs = async (req, res) => {
@@ -41,34 +41,41 @@ const getBlogBySlug = async (req, res) => {
             })
         }
 
-        blogs.view += 1;
+        blog.view += 1;
+        await blog.save();
         
-        return res.status(200),json({
+        return res.status(200).json({
             blog
         })
     }catch(err){
         console.log("BLog error : ", err );
     }
+}
 
-    const createBlog = async (req, res) => {
+ const createBlog = async (req, res) => {
         try{
+
+        
               const { title, content, thumbnail, tags, category, description , status} = req.body;
 
-              if( !title || content ){
+              if( !title || !content ){
                 return res.status(400).json({
                     message:"Title and content required"
                 })
+              }
 
-                const slug = slugify(title, { 
+              const slug = slugify(title, { 
                     lower: true, strict: true
                 })
-              }
 
             const exists = await Blog.findOne({ slug });
                  if (exists) return res.status(409).json({ message: 'A post with this title already exists' });
- 
+                
+                 console.log(req.user);
+
             const blog = await Blog.create({
-                title, content, thumbnail, tags, category, status, description ,author: req.user.id,
+                title, content, thumbnail, slug ,tags, category, status, description ,
+                author: req.user.id,
      });
 
      return res.status(201).json({
@@ -78,6 +85,6 @@ const getBlogBySlug = async (req, res) => {
             console.log("Blog creation error : ", err );
         }
     }
-}
 
-module.exports = { getAllBlogs, getBlogBySlug };
+
+module.exports = { getAllBlogs, getBlogBySlug, createBlog };

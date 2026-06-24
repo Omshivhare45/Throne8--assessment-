@@ -20,7 +20,7 @@ const blogSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      enum: ['AI Trends', 'Development', 'Cybersecurity', 'Cloud', 'Company Updates', 'General'],
+      enum: ['AI Trends', 'Development', 'Cybersecurity', 'Cloud', 'Company Updates', 'General',],
       default: 'General',
     },
     author: {

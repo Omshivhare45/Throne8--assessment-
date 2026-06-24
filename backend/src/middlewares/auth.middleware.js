@@ -16,7 +16,7 @@ async function authAdmin( req, res, next ){
 
         if( decoded.role !== 'admin' ){
             return res.status(403).json({
-                message:"YOu don't have access to admin panel"
+                message:"You don't have access to admin panel"
             })
         }
 
