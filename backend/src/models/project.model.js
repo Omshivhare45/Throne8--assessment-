@@ -5,6 +5,13 @@ const projectSchema = new mongoose.Schema({
     type: String,
     required: true, 
   },
+  slug:{
+    type:String,
+    required:true,
+    unique: true,
+    lowercase: true,
+    trim: true
+  },
   description: {
     type: String,
     required: true,
@@ -16,7 +23,7 @@ const projectSchema = new mongoose.Schema({
   },
   features: {
     type: [String],
-    required: true,
+    default:[]
   },
   techStack: {
     type: [String],  
@@ -34,7 +41,25 @@ const projectSchema = new mongoose.Schema({
   },
   screenshots:{
     type:String
+  },
+  solution:{
+    type:String,
+    required: true,
+  },industry:{
+    type: String,
+    enum:[ "Healthcare", "Education", "FinTech", "E-Commerce", "Logistics", "Real Estates", "Saas", "startups", "Enterprise business"],
+  },
+  status:{
+    type:String,
+    enum:['published', 'draft'],
+    default: 'draft'
+  },completedAt:{
+    type:Date,
   }
 }, { timestamps: true });
+
+
+projectSchema.index({ featured: 1, status: 1 });
+projectSchema.index({ industry: 1 });
 
 module.exports = mongoose.model('project', projectSchema);
