@@ -42,12 +42,8 @@ async function authUser(req,res,next){
 
     try{
         const decoded = jwt.verify( token , process.env.JWT_SECRET_KEY);
-
-        if( decoded.role !== 'user' ){
-            return res.status(403).json({
-                message:"You don't have access"
-            })
-        }
+        req.user = decoded;
+        next();
 
         req.user = decoded;
 

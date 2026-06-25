@@ -7,6 +7,13 @@ const blogSchema = new mongoose.Schema(
       required: [true, 'Title is required'],
       trim: true,
     },
+    slug:{
+      type:String,
+      required:true,
+      unique:true,
+      lowercase:true,
+      trim: true
+    },
     content: {
       type: String,
       required: [true, 'Content is required'],
@@ -35,6 +42,10 @@ const blogSchema = new mongoose.Schema(
       type: String,
       enum: ['draft', 'published'],
       default: 'draft',
+    },
+    views:{
+      type: Number,
+      default: 0,
     }
   },
   { timestamps: true }

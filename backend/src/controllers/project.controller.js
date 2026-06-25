@@ -44,15 +44,15 @@ const getAllProjects = async (req, res) => {
     const { industry, featured } = req.query;
     const query = { status: 'published' };
  
-    if (industry) query.industry = industry;
-    if (featured === 'true') query.featured = true;
+        if (industry) query.industry = industry;
+        if (featured === 'true') query.featured = true;
  
-    const projects = await Project.find(query)
-      .sort({ createdAt: -1 })
-      .select('-screenshots');
+          const projects = await Project.find(query)
+            .sort({ createdAt: -1 })
+            .select('-screenshots');
  
-    return res.status(200).json({ projects });
-  } catch (err) {
+            return res.status(200).json({ projects });
+      } catch (err) {
     return res.status(500).json({ message: 'Server error' });
   }
 };

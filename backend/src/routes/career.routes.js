@@ -1,20 +1,22 @@
 const express = require("express");
 
 const { getAllCareers, getCareerById, applyForCareer, createCareer , updateApplicationStatus, deleteCareer, updateCareer, getApplicationsByCareer} = require('../controllers/career.controller');
+const { authAdmin } = require("../middlewares/auth.middleware");
 
 const router = express.Router();
 
 
 router.get('/', getAllCareers);
 router.get('/:id', getCareerById);
-
-
-router.put('/', createCareer);
-router.put('/:id', updateCareer);
-router.delete("/:id", deleteCareer);
-router.get('/:id/applications', getApplicationsByCareer);
-router.patch('/applications/:id/status', updateApplicationStatus);
 router.post('/:id/apply', applyForCareer);
+
+
+
+router.put('/', authAdmin,createCareer);
+router.put('/:id', authAdmin,updateCareer);
+router.delete("/:id", authAdmin,deleteCareer);
+router.get('/:id/applications', authAdmin,getApplicationsByCareer);
+router.patch('/applications/:id/status', authAdmin,updateApplicationStatus);
 
 
 module.exports = router;
