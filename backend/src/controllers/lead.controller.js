@@ -102,7 +102,7 @@ const getLeadById = async (req, res) => {
 const updateLead = async (req, res) => {
   try{
     const { status, adminNote } = req.body;
-    const lead = await Lead.findByIdAndUpdate(req.params.id, {status, adminNote},{new: true});
+    const lead = await Lead.findByIdAndUpdate(req.params.id, {status, adminNote},{returnDocument: 'after'});
     if(!lead){
       return res.status(200).json({
         message:"lead not found"

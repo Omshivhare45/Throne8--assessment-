@@ -9,6 +9,7 @@ const blogRoutes = require('../src/routes/blog.routes');
 const projectRoutes = require('../src/routes/project.routes');
 const careerRoutes = require('../src/routes/career.routes');
 const leadRoutes = require("../src/routes/lead.routes");
+const testimonialRoutes = require("../src/routes/testimonial.routes");
  
 app.use(express.json());
 app.use(cookieParser());
@@ -24,6 +25,7 @@ app.use("/api/blogs", blogRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/careers', careerRoutes);
 app.use('/api/leads', leadRoutes);
+app.use('/api/testimonial', testimonialRoutes);
 
 
 module.exports = app;
