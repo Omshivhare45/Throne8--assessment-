@@ -5,5 +5,5 @@ const connectDB = require('./src/config/db');
 connectDB();
 
 app.listen(3000, () => {
-    console.log("Server running on 3000");
+    console.log("Server running on 3000📈");
 })

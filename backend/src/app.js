@@ -8,13 +8,14 @@ const authRoutes = require('./routes/auth.routes');
 const blogRoutes = require('../src/routes/blog.routes');
 const projectRoutes = require('../src/routes/project.routes');
 const careerRoutes = require('../src/routes/career.routes');
+const leadRoutes = require("../src/routes/lead.routes");
  
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true}));
 app.use(helmet());
 app.use(cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:5137',
+    origin: process.env.CLIENT_URL || 'http://localhost:5173',
     credentials:true
 }))
 
@@ -22,5 +23,7 @@ app.use('/api/auth/', authRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/careers', careerRoutes);
+app.use('/api/leads', leadRoutes);
+
 
 module.exports = app;

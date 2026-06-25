@@ -12,7 +12,7 @@ router.post('/:id/apply', applyForCareer);
 
 
 
-router.put('/', authAdmin,createCareer);
+router.post('/', authAdmin,createCareer);
 router.put('/:id', authAdmin,updateCareer);
 router.delete("/:id", authAdmin,deleteCareer);
 router.get('/:id/applications', authAdmin,getApplicationsByCareer);
