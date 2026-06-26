@@ -4,6 +4,7 @@ const helmet = require('helmet');
 const app = express();
 const cookieParser = require('cookie-parser');
 
+const {errorHandler} = require('../src/middlewares/errorHanlder');
 const authRoutes = require('./routes/auth.routes');
 const blogRoutes = require('../src/routes/blog.routes');
 const projectRoutes = require('../src/routes/project.routes');
@@ -29,5 +30,8 @@ app.use('/api/leads', leadRoutes);
 app.use('/api/testimonial', testimonialRoutes);
 app.use('/api/casestudy', caseStudyRoutes);
 
+app.get('/api/health', (req, res) => res.status(200).json({status:"OK"}));
+app.use((req,res) => res.status(404).json({message: "Route not found"}));
+app.use(errorHandler);
 
 module.exports = app;

@@ -90,8 +90,8 @@ const deleteTestimonial = async (req, res) => {
         if( !t ) return res.status(404).json({
             messagee:"Not found"
         });
-        return res.status(500).json({
-            message:"Server error"
+        return res.status(200).json({
+            message:"Deleted successfully"
         })
     }catch(err){
         console.log("Deletion testimonial error : ", err);
