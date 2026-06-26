@@ -1,9 +1,5 @@
 
-import './App.css'
-
-function App() {
-  
-
+  import './App.css'
   import Home from '.pages/Home';
   import About from './pages/About';
   import Services from './pages/Services';
@@ -15,6 +11,9 @@ function App() {
   import Careers from './pages/Careers';
   import Contact from './pages/Contact';
   import Admin from './pages/Admin';
+
+function App() {
+  
 
   return (
     <>
