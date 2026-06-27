@@ -12,6 +12,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
   import Careers from './pages/public/Careers';
   import Contact from './pages/public/Contact';
   import Admin from './pages/admin/AdminLayout';
+  import Login from "./pages/auth/Login";
+  import Register from "./pages/auth/Register";
 
 function App() {
 
@@ -29,7 +31,12 @@ function App() {
       <Route path='/blog' element={<Blog />}/>
       <Route path='/careers' element={<Careers />}/>
       <Route path='/contact' element={<Contact />}/>
+
       <Route path='/Admin' element={<Admin />}/>
+
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+
       </Routes>
       </BrowserRouter>
     </>
