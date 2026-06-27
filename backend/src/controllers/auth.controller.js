@@ -4,14 +4,10 @@ const bcrypt = require('bcrypt');
 
 async function registerUser(req, res){
     try{
-        console.log(req.body);
     const { email, password, username, name } = req.body;
 
     const exist = await userModel.findOne({
-        $or:[
-            {email},
-            {username}
-        ]
+        email
     })
 
     if(exist){
@@ -23,21 +19,37 @@ async function registerUser(req, res){
     const hash = await bcrypt.hash(password, 10);
 
     const user = await userModel.create({ 
-        email, password: hash, username    
+        name, email, password: hash, username    
     })
 
     const token = jwt.sign({
         id : user._id,
         role:user.role
-    },process.env.JWT_SECRET_KEY);
+    },process.env.JWT_SECRET_KEY, {
+        expiresIn: '7d'
+    });
 
-    res.cookie('token', token);
+    res.cookie('token', token, {
+        httpOnly: true,
+        secure: false,
+        sameSite: 'lax'
+    });
 
     return res.status(200).json({
-        message:"User registered successfully"
+        message:"User registered successfully",
+
+         accessToken : token,
+
+        user:{
+            _id: user._id,
+            name: user.name,
+            username: user.username,
+            email: user.email,
+            role: user.role
+        }
     })
     }catch(err){
-    console.log("Registration error", err);
+    console.error(err);
     return res.status(500).json({
         message:"Internal server error"
     })
@@ -46,13 +58,10 @@ async function registerUser(req, res){
 
 async function loginUser(req, res){
     try{
-    const{ email, password, username, name } = req.body;
+    const{ email, password } = req.body;
 
     const user = await userModel.findOne({
-        $or:[
-            {email},
-            {username}
-        ]
+        email
     })
 
     if(!user){
@@ -72,15 +81,31 @@ async function loginUser(req, res){
     const token = jwt.sign({
         id: user._id,
         role: user.role
-    },process.env.JWT_SECRET_KEY);
+    },process.env.JWT_SECRET_KEY, {
+        expiresIn: '7d'
+    });
     
-    res.cookie("token", token);
+    res.cookie("token", token, {
+        httpOnly: true,
+        secure: false,
+        sameSite: 'lax'
+    });
 
     return res.status(200).json({
-        message: "Login successful"
+        message: "Login successful",
+
+        accessToken : token,
+
+        user:{
+            _id: user._id,
+            name: user.name,
+            username: user.username,
+            email: user.email,
+            role: user.role
+        }
     });
 }catch(err){
-    console.log("login error: ", err);
+    console.error(err);
     return res.status(500).json("Internal server error")
 }
 

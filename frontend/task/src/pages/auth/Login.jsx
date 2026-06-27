@@ -1,9 +1,56 @@
 import { Link } from "react-router-dom";
 import video from "../../assets/video.mp4";
 import "./Login.css";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { login } from "../../api/auth.api";
+import useAuthStore from "../../store/authStore";
 
 const Login = () => {
+
+    const navigate = useNavigate();
+    const { setAuth } = useAuthStore();
+    const [ formData, setFormData ] = useState({
+        email: "",
+        password: "",
+    });
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try{
+            const res = await login(formData);
+
+            console.log(res.data);
+
+            alert("Login Successful");
+
+            setAuth(
+                res.data.user,
+                res.data.accessToken
+            );
+            navigate("/admin");
+        }catch(err){
+            console.log("STATUS:", err.response?.status);
+
+    console.log("DATA:", err.response?.data);
+
+    console.log("FULL ERROR:", err);
+
+
+            alert(err.response?.data?.message || "Login Failed");
+        }
+    }
+
   return (
+
     <div className="auth-container">
 
     
@@ -28,7 +75,14 @@ const Login = () => {
         </p>
 
         <div className="hero-image">
-          
+          <video
+            src={video}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="hero-video"
+            />
         </div>
 
       </div>
@@ -45,14 +99,14 @@ const Login = () => {
             Login to access the Admin Dashboard
           </p>
 
-          <form className="auth-form">
+          <form className="auth-form" onSubmit={handleSubmit}>
 
             <div className="form-group">
               <label>Email Address</label>
 
               <input
-                type="email"
-                placeholder="Enter your email"
+                type="email" name="email"
+                placeholder="Enter your email" value={formData.email} onChange={handleChange} required
               />
             </div>
 
@@ -62,12 +116,15 @@ const Login = () => {
 
               <input
                 type="password"
+                name="password"
                 placeholder="Enter your password"
-              />
-
+                value={formData.password}
+                onChange={handleChange}
+                required
+                />
             </div>
 
-            <button className="auth-btn">
+            <button className="auth-btn" type="submit">
               Login
             </button>
 
