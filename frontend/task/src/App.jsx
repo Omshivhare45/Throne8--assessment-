@@ -1,17 +1,17 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
   import './App.css'
-  import Home from '../src/pages/public/Home';
-  import About from '../src/pages/public/About';
-  import Services from '../src/pages/public/Services';
-  import Industries from '../src/pages/public/Industries';
-  import Portfolio from '.../src/pages/public/Portfolio';
-  import CaseStudies from '../src/pages/public/CaseStudies';
-  import Technologies from '../src/pages/public/Technologies';
-  import Blog from '../src/pages/public/Blog';  
-  import Careers from '../src/pages/public/Careers';
-  import Contact from '../src/pages/public/Contact';
-  import Admin from '../src/pages/admin/AdminLayout';
+  import Home from './pages/public/Home';
+  import About from './pages/public/About';
+  import Services from './pages/public/Services';
+  import Industries from './pages/public/Industries';
+  import Portfolio from './pages/public/Portfolio';
+  import CaseStudies from './pages/public/CaseStudies';
+  import Technologies from './pages/public/Technologies';
+  import Blog from './pages/public/Blog';  
+  import Careers from './pages/public/Careers';
+  import Contact from './pages/public/Contact';
+  import Admin from './pages/admin/AdminLayout';
 
 function App() {
 

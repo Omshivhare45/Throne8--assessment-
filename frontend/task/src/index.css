@@ -1,31 +1,11 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  font-family: 'Inter', sans-serif;
-  background: #0d1117;
-  color: #e6edf3;
-  line-height: 1.6;
+  display: flex;
+  place-items: center;
+  min-height: 100vh;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
 }
-
-button {
-  cursor: pointer;
-  font-family: inherit;
-}
-
-input, textarea, select {
-  font-family: inherit;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #0d1117; }
-::-webkit-scrollbar-thumb { background: #30363d; border-radius: 3px; }
