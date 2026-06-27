@@ -2,6 +2,7 @@ import{ useState, useEffect } from 'react'
 import{ NavLink, useLocation } from 'react-router-dom'
 import useThemeStore from '../store/Themestore.js'
 import {FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi';
+import './Navbar.css'
 
 const navLinks = [
     {label:"Home", to:"/"},
@@ -27,7 +28,7 @@ const Navbar = () => {
             <ul className="navbar-links">
                 {navLinks.map((link) => (
                     <li key={link.to}>
-                        <NavLink to={link.to}>
+                        <NavLink to={link.to} className={"nav-link"}>
                             {link.label}
                         </NavLink>
                     </li>

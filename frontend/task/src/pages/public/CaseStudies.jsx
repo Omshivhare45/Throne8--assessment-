@@ -6,4 +6,4 @@ const CaseStudies = () => {
   )
 }
 
-export default CaseStudies
+export default CaseStudies;

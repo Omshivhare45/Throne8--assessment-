@@ -1,0 +1,100 @@
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:4rem;
+
+    padding:120px 6% 80px;
+
+    padding-top: 40px;
+}
+
+.hero-content{
+
+    flex:1;
+
+}
+
+.hero-image{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.hero-tag{
+
+    font-size:.9rem;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    margin-bottom:1rem;
+
+}
+
+.hero-title{
+
+    font-size:4.5rem;
+
+    line-height:1.1;
+
+    margin-bottom:1.5rem;
+
+}
+
+.hero-description{
+
+    max-width:600px;
+
+    line-height:1.8;
+
+    margin-bottom:2rem;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:1rem;
+
+}
+
+.hero-btn{
+
+    padding:1rem 2rem;
+
+    cursor:pointer;
+
+}
+
+.hero-placeholder{
+
+    width:500px;
+
+    height:500px;
+
+    border:2px dashed gray;
+
+    border-radius:20px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
