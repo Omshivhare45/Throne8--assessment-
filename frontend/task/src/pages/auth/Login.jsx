@@ -1,159 +1,79 @@
-import { Link } from "react-router-dom";
-import video from "../../assets/video.mp4";
-import "./Login.css";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { login } from "../../api/auth.api";
-import useAuthStore from "../../store/authStore";
+import { useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { FiSun, FiMoon } from 'react-icons/fi'
+import useAuthStore from '../../store/authStore'
+import useThemeStore from '../../store/themeStore'
+import api from '../../services/api'
+import './Login.css'
 
 const Login = () => {
+  const [email, setEmail]       = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError]       = useState('')
+  const [loading, setLoading]   = useState(false)
 
-    const navigate = useNavigate();
-    const { setAuth } = useAuthStore();
-    const [ formData, setFormData ] = useState({
-        email: "",
-        password: "",
-    });
+  const setAuth   = useAuthStore((s) => s.setAuth)
+  const { theme, toggleTheme } = useThemeStore()
+  const navigate  = useNavigate()
 
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setError('')
+    if (!email || !password) return setError('Both fields are required')
+    setLoading(true)
+    try {
+      const { data } = await api.post('/auth/login', { email, password })
+      setAuth(data.user, data.accessToken)
+      navigate('/admin')
+    } catch (err) {
+      setError(err?.response?.data?.message || 'Login failed. Try again.')
+    } finally {
+      setLoading(false)
     }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        try{
-            const res = await login(formData);
-
-            console.log(res.data);
-
-            alert("Login Successful");
-
-            setAuth(
-                res.data.user,
-                res.data.accessToken
-            );
-            navigate("/admin");
-        }catch(err){
-            console.log("STATUS:", err.response?.status);
-
-    console.log("DATA:", err.response?.data);
-
-    console.log("FULL ERROR:", err);
-
-
-            alert(err.response?.data?.message || "Login Failed");
-        }
-    }
+  }
 
   return (
+    <div className="login-page">
 
-    <div className="auth-container">
+      <button className="login-theme-btn" onClick={toggleTheme} aria-label="Toggle theme">
+        {theme === 'dark' ? <FiSun size={16} /> : <FiMoon size={16} />}
+      </button>
 
-    
+      <div className="login-card">
+        <NavLink to="/" className="login-logo">XYZ<span /></NavLink>
+        <h1>Admin Login</h1>
+        <p className="login-sub">Sign in to manage your website</p>
 
-      <div className="auth-left">
+        {error && <div className="error-box">{error}</div>}
 
-        <h1 className="auth-logo">
-          Throne<span>8</span>
-        </h1>
-
-        <h2 className="hero-heading">
-          Engineering
-          <br />
-          Tomorrow's
-          <br />
-          Digital Future.
-        </h2>
-
-        <p className="hero-text">
-          We build enterprise software, AI solutions and scalable
-          digital products for startups, businesses and governments.
-        </p>
-
-        <div className="hero-image">
-          <video
-            src={video}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="hero-video"
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="form-field">
+            <label htmlFor="email">Email address</label>
+            <input
+              id="email" type="email" className="input"
+              placeholder="admin@xyzcompany.com"
+              value={email} onChange={(e) => setEmail(e.target.value)}
             />
-        </div>
-
-      </div>
-
-
-
-      <div className="auth-right">
-
-        <div className="auth-card">
-
-          <h2>Welcome Back</h2>
-
-          <p className="auth-line">
-            Login to access the Admin Dashboard
-          </p>
-
-          <form className="auth-form" onSubmit={handleSubmit}>
-
-            <div className="form-group">
-              <label>Email Address</label>
-
-              <input
-                type="email" name="email"
-                placeholder="Enter your email" value={formData.email} onChange={handleChange} required
-              />
-            </div>
-
-            <div className="form-group">
-
-              <label>Password</label>
-
-              <input
-                type="password"
-                name="password"
-                placeholder="Enter your password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-                />
-            </div>
-
-            <button className="auth-btn" type="submit">
-              Login
-            </button>
-
-          </form>
-
-          <div className="divider">
-            <span>OR</span>
           </div>
 
-          <button className="google-btn">
-            Continue with Google
+          <div className="form-field">
+            <label htmlFor="password">Password</label>
+            <input
+              id="password" type="password" className="input"
+              placeholder="Your password"
+              value={password} onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+
+          <button type="submit" className="btn btn-primary login-submit" disabled={loading}>
+            {loading ? 'Signing in...' : 'Sign In'}
           </button>
+        </form>
 
-          <p className="auth-footer">
-
-            Don't have an account?
-
-            <Link to="/register">
-              Register
-            </Link>
-
-          </p>
-
-        </div>
-
+        <NavLink to="/" className="login-back">← Back to website</NavLink>
       </div>
-
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

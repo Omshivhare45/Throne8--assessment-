@@ -1,104 +1,171 @@
-body{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
+/* Navbar.css — fixed to match your Navbar.jsx */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: rgba(11, 13, 18, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  z-index: 1000;
+  transition: background 0.3s, box-shadow 0.3s;
 }
 
-.navbar{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    
-    background: rgba(33, 46, 77, 0.85);
-    backdrop-filter:blur(18px);
-    border-bottom: 1px solid rgba(207, 26, 26, 0.08);
-    z-index: 1000;
+/* scrolled state — add this class via JS */
+.navbar.scrolled {
+  background: var(--bg2);
+  box-shadow: 0 1px 0 var(--border);
 }
 
-.navbar{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 2rem;
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  gap: 2rem;
 }
 
-.navbar-logo{
-    font-size:1.8rem;
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: 1px;
-    cursor: pointer;
-    user-select: none;
-    margin-right: auto;
+/* Logo */
+.navbar-logo {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 1px;
+  cursor: pointer;
+  user-select: none;
+  margin-right: auto;
+  text-decoration: none;
 }
 
-.navbar-links{
-    display: flex;
-    align-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 40px
+/* Desktop nav links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 4px;
 }
 
-.nav-link{
-    text-decoration:none;
-    color:#cbd5e1;
-    font-size:.95rem;
-    font-weight:700;
-    transition:.3s;
-    position:relative;
-    
+.nav-link {
+  text-decoration: none;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  transition: color 0.2s, background 0.2s;
+  position: relative;
 }
 
-.active-link{
-    color:#2563eb;
+.nav-link:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.06);
 }
 
-.navbar-actions{
-    display:flex;
-    align-items:center;
-    gap:1rem;
-    margin-left:auto;
+/* react-router NavLink adds this class */
+.nav-link.active,
+.active-link {
+  color: var(--primary);
+  background: rgba(37,99,235,0.12);
 }
 
-.theme-btn{
-    width:42px;
-    height: 42px;
-    border:none;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    background: #111827;
-    color: white;
-    font-size: 1.2 rem;
-    transition: .3s;
+/* Right-side actions */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
 }
 
-.theme-btn:hover{
-    background:#2563eb;
-    transform:rotate(180deg);
+/* Theme toggle */
+.theme-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 1rem;
+  transition: background 0.2s, transform 0.3s;
 }
 
-.consult-btn{
-    padding:.8rem 1.5rem;
-    border-radius:30px;
-    background:#2563eb;
-    color:white;
-    font-weight:600;
-    text-decoration:none;
+.theme-btn:hover {
+  background: var(--primary);
+  transform: rotate(20deg);
 }
 
-.consult-btn:hover{
-    background:#1d4ed8;
-    transform:translateY(-2px);
+/* Book consultation CTA */
+.consult-btn {
+  padding: 0.6rem 1.25rem;
+  border-radius: 30px;
+  background: var(--primary);
+  color: white;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  white-space: nowrap;
 }
 
-.menu-btn{
-    display: none;
+.consult-btn:hover {
+  background: var(--primary-h);
+  transform: translateY(-1px);
 }
 
+/* Hamburger — hidden on desktop */
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem 1.5rem 1.5rem;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+}
+
+.mobile-link {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text2);
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s;
+  text-decoration: none;
+}
+
+.mobile-link:hover { color: var(--primary); }
+.mobile-link:last-of-type { border-bottom: none; }
+
+/* ─── Responsive ──────────────────────────── */
+@media (max-width: 960px) {
+  .navbar-links { display: none; }
+  .consult-btn  { display: none; }
+  .menu-btn     { display: flex; }
+}
+
+@media (max-width: 480px) {
+  .navbar-inner { padding: 0 1.25rem; }
+  .navbar-logo  { font-size: 1.3rem; }
+}

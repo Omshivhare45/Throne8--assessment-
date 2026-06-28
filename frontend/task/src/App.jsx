@@ -1,4 +1,6 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+
+import useAuthStore from './store/authStore';
 
   import './App.css'
   import Home from './pages/public/Home';
@@ -11,9 +13,24 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
   import Blog from './pages/public/Blog';  
   import Careers from './pages/public/Careers';
   import Contact from './pages/public/Contact';
-  import Admin from './pages/admin/AdminLayout';
+
   import Login from "./pages/auth/Login";
   import Register from "./pages/auth/Register";
+
+  import AdminLayout from './pages/admin/AdminLayout';
+  import AdminDashboard from './pages/admin/Dashboard';
+  import AdminProjects from './pages/admin/Projects';
+  import AdminLeads    from './pages/admin/Leads';
+  import AdminBlogs    from './pages/admin/Blogs'
+  import AdminCareers  from './pages/admin/Careers'
+  import AdminSettings from './pages/admin/Settings'
+
+  function ProtectedRoute({ children }){
+    const isAuthenticated = useAuthStore((s) => s.isAuthenticated)
+    if(!isAuthenticated)return <Navigate to="/login" replace />
+    return children;
+  }
+
 
 function App() {
 
@@ -32,10 +49,19 @@ function App() {
       <Route path='/careers' element={<Careers />}/>
       <Route path='/contact' element={<Contact />}/>
 
-      <Route path='/Admin' element={<Admin />}/>
-
       <Route path="/login" element={<Login />} />
+
+      <Route path='/Admin' element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}/>
+      <Route index              element={<AdminDashboard />} />
+          <Route path="blogs"       element={<AdminBlogs />} />
+          <Route path="projects"    element={<AdminProjects />} />
+          <Route path="leads"       element={<AdminLeads />} />
+          <Route path="careers"     element={<AdminCareers />} />
+          <Route path="settings"    element={<AdminSettings />} />
+      
       <Route path="/register" element={<Register />} />
+
+      <Route path="*" element={<Navigate to="/" replace />}/>
 
       </Routes>
       </BrowserRouter>
