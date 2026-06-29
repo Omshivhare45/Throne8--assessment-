@@ -60,7 +60,7 @@ function App() {
             </ProtectedRoute>
           }
         >
-          <Route index            element={<AdminDashboard />} />
+          <Route path='/admin'            element={<AdminDashboard />} />
           <Route path="/admin/blogs"     element={<AdminBlogs />} />
           <Route path="/admin/projects"  element={<AdminProjects />} />
           <Route path="/admin/leads"     element={<AdminLeads />} />

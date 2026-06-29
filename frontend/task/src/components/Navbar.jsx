@@ -30,7 +30,7 @@ const Navbar = () => {
       <div className="navbar-inner container">
 
         <NavLink to="/" className="navbar-logo">
-          XYZ<span className="navbar-dot" />
+          Throne8<span className="navbar-dot" />
         </NavLink>
 
         <ul className="navbar-links">

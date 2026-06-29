@@ -1,0 +1,166 @@
+/* ─── Header ──────────────────────────────── */
+.admin-dashboard-head {
+  margin-bottom: 1.75rem;
+}
+
+.admin-dashboard-head h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+}
+
+.admin-dashboard-head p {
+  color: var(--text2);
+  font-size: 0.875rem;
+}
+
+/* ─── Stat cards ──────────────────────────── */
+.dashboard-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.dashboard-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+}
+
+.dashboard-stat-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  background: var(--bg3);
+  color: var(--text2);
+  flex-shrink: 0;
+}
+.dashboard-stat-icon-blue   { background: rgba(37,99,235,0.1);  color: var(--primary); }
+.dashboard-stat-icon-green  { background: rgba(22,163,74,0.1);  color: var(--green); }
+.dashboard-stat-icon-accent { background: rgba(200,160,77,0.15); color: var(--accent); }
+
+.dashboard-stat-value {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.dashboard-stat-label {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text3);
+  margin-top: 0.1rem;
+}
+
+.dashboard-stat-skeleton {
+  height: 82px;
+  border-radius: 10px;
+}
+
+/* ─── Two-column panels ───────────────────── */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 1.25rem;
+}
+
+.dashboard-panel h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.dashboard-empty-text {
+  font-size: 0.85rem;
+  color: var(--text3);
+}
+
+/* ─── Funnel ──────────────────────────────── */
+.dashboard-funnel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.dashboard-funnel-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ─── Recent leads list ───────────────────── */
+.dashboard-recent-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
+}
+
+.dashboard-recent-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+.dashboard-recent-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.dashboard-recent-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.dashboard-recent-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dashboard-recent-email {
+  font-size: 0.78rem;
+  color: var(--text3);
+}
+
+.dashboard-panel-link {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--primary);
+}
+.dashboard-panel-link:hover {
+  color: var(--primary-h);
+}
+
+/* ─── Responsive ──────────────────────────── */
+@media (max-width: 1000px) {
+  .dashboard-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .dashboard-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
