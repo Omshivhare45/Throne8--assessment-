@@ -12,6 +12,7 @@ const careerRoutes = require('../src/routes/career.routes');
 const leadRoutes = require("../src/routes/lead.routes");
 const testimonialRoutes = require("../src/routes/testimonial.routes");
 const caseStudyRoutes = require("../src/routes/casestudy.routes");
+const bootstrapRoutes = require('../src/routes/bootstrap.routes');
  
 app.use(express.json());
 app.use(cookieParser());
@@ -30,6 +31,7 @@ app.use('/api/careers', careerRoutes);
 app.use('/api/leads', leadRoutes);
 app.use('/api/testimonial', testimonialRoutes);
 app.use('/api/casestudy', caseStudyRoutes);
+app.use("/api/bootstrap", bootstrapRoutes);
 
 app.get('/api/health', (req, res) => res.status(200).json({status:"OK"}));
 app.use((req,res) => res.status(404).json({message: "Route not found"}));

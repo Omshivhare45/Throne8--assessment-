@@ -40,10 +40,9 @@ const Careers = () => {
 
   const fetchCareers = () => {
     setLoading(true)
-    // Admin view needs every status, not just "open" — the public /careers
-    // endpoint only returns open roles, so this assumes a future
-    // admin-scoped endpoint (see note below the component).
-    api.get('/careers')
+    // Uses the admin-scoped endpoint so paused/closed postings show up too —
+    // the public /careers endpoint only ever returns status: 'open'.
+    api.get('/careers/admin/all')
       .then(({ data }) => setCareers(data.careers || []))
       .catch(() => setError('Could not load job postings.'))
       .finally(() => setLoading(false))

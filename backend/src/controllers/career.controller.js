@@ -22,6 +22,24 @@ const getAllCareers = async (req, res) => {
     };
 }
 
+const adminGetAllCareers = async (req, res) => {
+    try {
+        const { department, type, status } = req.query;
+        const query = {};
+
+        if (department) query.department = department;
+        if (type)       query.type = type;
+        if (status)     query.status = status;
+
+        const careers = await Career.find(query).sort({ createdAt: -1 });
+
+        return res.status(200).json({ careers });
+    } catch (err) {
+        console.error("adminGetAllCareers error : ", err);
+        return res.status(500).json({ message: "Server error" });
+    }
+}
+
 const getCareerById = async (req, res) => {
     try {
         const career = await Career.findOne({ _id: req.params.id, status: 'open' });
@@ -135,4 +153,4 @@ const updateApplicationStatus = async (req, res) => {
   }
 };
 
-module.exports = { applyForCareer, getAllCareers, createCareer, getCareerById, updateCareer, deleteCareer, getApplicationsByCareer, updateApplicationStatus };
+module.exports = { applyForCareer, getAllCareers, adminGetAllCareers, createCareer, getCareerById, updateCareer, deleteCareer, getApplicationsByCareer, updateApplicationStatus };
