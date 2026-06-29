@@ -1,4 +1,4 @@
-/* ─── Hero (Home page variant) ────────────── */
+
 
 .hero {
   background: var(--bg);
@@ -57,7 +57,7 @@
   flex-wrap: wrap;
 }
 
-/* ─── Terminal ────────────────────────────── */
+
 .terminal {
   background: var(--bg2);
   border: 1px solid var(--border);
@@ -108,7 +108,7 @@
 
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-/* ─── Stats bar ───────────────────────────── */
+
 .stats-bar {
   border-top: 1px solid var(--border);
   padding: 1.25rem 0;
@@ -142,7 +142,7 @@
   letter-spacing: 0.02em;
 }
 
-/* ─── Tech strip ──────────────────────────── */
+
 .tech-strip {
   display: flex;
   flex-wrap: wrap;
@@ -163,7 +163,7 @@
 }
 .tech-chip:hover { border-color: var(--text3); color: var(--text); }
 
-/* ─── Process list ────────────────────────── */
+
 .process-list {
   max-width: 640px;
   margin: 0 auto;
@@ -194,7 +194,6 @@
   font-family: 'SF Mono', monospace;
 }
 
-/* ─── Contact ─────────────────────────────── */
 .contact-wrap {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -213,7 +212,7 @@
   color: var(--text2);
 }
 
-/* ─── Responsive ──────────────────────────── */
+
 @media (max-width: 900px) {
   .hero .container { grid-template-columns: 1fr; padding-top: 2.5rem; }
   .terminal { order: -1; }

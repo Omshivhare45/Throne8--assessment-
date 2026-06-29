@@ -1,4 +1,4 @@
-/* ─── Portfolio grid ──────────────────────── */
+
 
 .portfolio-grid {
   display: grid;
@@ -6,7 +6,7 @@
   gap: 1.25rem;
 }
 
-/* ─── Card ────────────────────────────────── */
+
 
 .portfolio-card {
   display: flex;
@@ -24,7 +24,6 @@
   box-shadow: var(--shadow);
 }
 
-/* ─── Card head ───────────────────────────── */
 
 .portfolio-card-head {
   display: flex;
@@ -54,8 +53,6 @@
   border-radius: 4px;
 }
 
-/* ─── Text ────────────────────────────────── */
-
 .portfolio-name {
   font-size: 0.975rem;
   font-weight: 600;
@@ -71,7 +68,7 @@
   flex: 1;
 }
 
-/* ─── Tech stack tags ─────────────────────── */
+
 
 .portfolio-stack {
   display: flex;
@@ -91,7 +88,7 @@
   letter-spacing: 0.01em;
 }
 
-/* ─── Links ───────────────────────────────── */
+
 
 .portfolio-links {
   display: flex;
@@ -130,14 +127,14 @@
   border-color: var(--text3);
 }
 
-/* ─── Skeleton ────────────────────────────── */
+
 
 .portfolio-skeleton {
   height: 240px;
   border-radius: 10px;
 }
 
-/* ─── Responsive ──────────────────────────── */
+
 
 @media (max-width: 960px) {
   .portfolio-grid {

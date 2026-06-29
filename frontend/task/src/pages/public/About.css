@@ -1,4 +1,4 @@
-/* ─── Vision / Mission ────────────────────── */
+
 
 .about-vm-grid {
   display: grid;
@@ -43,7 +43,6 @@
   color: var(--text2);
 }
 
-/* ─── Values ──────────────────────────────── */
 
 .about-values-grid {
   display: grid;
@@ -99,7 +98,7 @@
   color: var(--text2);
 }
 
-/* ─── Team ────────────────────────────────── */
+
 
 .about-team-grid {
   display: grid;
@@ -151,8 +150,6 @@
   color: var(--text3);
   line-height: 1.4;
 }
-
-/* ─── Responsive ──────────────────────────── */
 
 @media (max-width: 900px) {
   .about-vm-grid {
