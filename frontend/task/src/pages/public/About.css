@@ -1,0 +1,185 @@
+/* ─── Vision / Mission ────────────────────── */
+
+.about-vm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.about-vm-divider {
+  background: var(--border);
+  width: 1px;
+  height: 100%;
+  min-height: 140px;
+  justify-self: center;
+}
+
+.about-vm-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.about-vm-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text3);
+}
+
+.about-vm-card h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.about-vm-card p {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text2);
+}
+
+/* ─── Values ──────────────────────────────── */
+
+.about-values-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.about-value-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.75rem 2rem;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.18s;
+}
+
+.about-value-item:nth-child(even) {
+  border-right: none;
+}
+
+.about-value-item:nth-last-child(-n+2) {
+  border-bottom: none;
+}
+
+.about-value-item:hover {
+  background: var(--bg2);
+}
+
+.about-value-num {
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  color: var(--text3);
+  letter-spacing: 0.05em;
+  padding-top: 3px;
+  flex-shrink: 0;
+}
+
+.about-value-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+
+.about-value-desc {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--text2);
+}
+
+/* ─── Team ────────────────────────────────── */
+
+.about-team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.about-team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg2);
+  transition: border-color 0.18s;
+}
+
+.about-team-card:hover {
+  border-color: var(--text3);
+}
+
+.about-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.about-team-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+
+.about-team-role {
+  font-size: 0.78rem;
+  color: var(--text3);
+  line-height: 1.4;
+}
+
+/* ─── Responsive ──────────────────────────── */
+
+@media (max-width: 900px) {
+  .about-vm-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .about-vm-divider { display: none; }
+
+  .about-values-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-value-item {
+    border-right: none;
+  }
+  .about-value-item:nth-last-child(-n+2) {
+    border-bottom: 1px solid var(--border);
+  }
+  .about-value-item:last-child {
+    border-bottom: none;
+  }
+
+  .about-team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .about-value-item { padding: 1.25rem; }
+  .about-team-grid  { grid-template-columns: repeat(2, 1fr); }
+}

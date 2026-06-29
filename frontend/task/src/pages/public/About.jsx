@@ -1,18 +1,19 @@
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import './About.css'
 
 const VALUES = [
-  { icon: '🎯', title: 'Client First',    desc: 'Every decision starts with your business goals.' },
-  { icon: '🔒', title: 'Transparency',    desc: 'No hidden costs. Weekly updates, always.' },
-  { icon: '⚡', title: 'Speed + Quality', desc: 'Agile delivery without cutting corners.' },
-  { icon: '🌱', title: 'Long-term',       desc: 'We build things that last and are easy to maintain.' },
+  { num: '01', title: 'Client First',    desc: 'Every decision starts with your business goals, not our preferences.' },
+  { num: '02', title: 'Transparency',    desc: 'No hidden costs. Clear timelines, weekly updates, always.' },
+  { num: '03', title: 'Speed + Quality', desc: 'Agile delivery without cutting corners on maintainability.' },
+  { num: '04', title: 'Long-term',       desc: 'We build things that last and are straightforward to hand off.' },
 ]
 
 const TEAM = [
-  { name: 'Om Shivhare',  role: 'Founder & Lead Developer', emoji: '👨‍💻' },
-  { name: 'Dev Team',     role: 'Full-Stack Engineers',      emoji: '⚙️' },
-  { name: 'Design Team',  role: 'UI/UX Designers',           emoji: '🎨' },
-  { name: 'DevOps Team',  role: 'Cloud & Infrastructure',    emoji: '☁️' },
+  { initials: 'OS', name: 'Om Shivhare',  role: 'Founder & Lead Developer' },
+  { initials: 'NM', name: 'Narendra Modi',     role: 'Full-Stack Engineers' },
+  { initials: 'AS', name: 'Amit Shah',  role: 'UI/UX Designers' },
+  { initials: 'KN', name: 'Kamal Nath',  role: 'Cloud & Infrastructure' },
 ]
 
 const About = () => {
@@ -21,26 +22,28 @@ const About = () => {
       <Navbar />
       <main className="page">
 
+        {/* Page header */}
         <div className="page-hero">
           <div className="container">
-            <span className="tag">Who We Are</span>
-            <h1>Built by Developers,<br /><span className="gradient-text">For Businesses That Scale</span></h1>
+            <span className="tag">Who we are</span>
+            <h1>Built by developers,<br />for businesses that scale</h1>
             <p>XYZ is a software company from Bhopal, India. We build digital products for startups and enterprises worldwide.</p>
           </div>
         </div>
 
         {/* Vision + Mission */}
         <section className="section">
-          <div className="container grid-2">
-            <div className="card">
-              <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>🔭</div>
-              <h2 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.6rem' }}>Our Vision</h2>
-              <p style={{ color: 'var(--text2)', lineHeight: 1.7 }}>To be the most trusted software partner globally — known for quality, speed and long-term relationships.</p>
+          <div className="container about-vm-grid">
+            <div className="about-vm-card">
+              <span className="about-vm-label">Vision</span>
+              <h2>To be the most trusted software partner globally</h2>
+              <p>Known for quality, speed, and relationships that outlast the project.</p>
             </div>
-            <div className="card">
-              <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>🎯</div>
-              <h2 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.6rem' }}>Our Mission</h2>
-              <p style={{ color: 'var(--text2)', lineHeight: 1.7 }}>Deliver scalable, secure and maintainable software that solves real business problems without big agency overhead.</p>
+            <div className="about-vm-divider" />
+            <div className="about-vm-card">
+              <span className="about-vm-label">Mission</span>
+              <h2>Deliver software that solves real problems</h2>
+              <p>Scalable, secure, and maintainable — without big agency overhead.</p>
             </div>
           </div>
         </section>
@@ -48,13 +51,18 @@ const About = () => {
         {/* Values */}
         <section className="section section-alt">
           <div className="container">
-            <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '2rem' }}>Core <span className="gradient-text">Values</span></h2>
-            <div className="grid-4">
+            <div className="section-center">
+              <span className="section-tag">What drives us</span>
+              <h2 className="section-title">Core values</h2>
+            </div>
+            <div className="about-values-grid">
               {VALUES.map((v) => (
-                <div key={v.title} className="card" style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '2rem', marginBottom: '0.7rem' }}>{v.icon}</div>
-                  <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.4rem' }}>{v.title}</h3>
-                  <p style={{ fontSize: '0.875rem', color: 'var(--text2)' }}>{v.desc}</p>
+                <div key={v.num} className="about-value-item">
+                  <span className="about-value-num">{v.num}</span>
+                  <div>
+                    <h3 className="about-value-title">{v.title}</h3>
+                    <p className="about-value-desc">{v.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -64,13 +72,16 @@ const About = () => {
         {/* Team */}
         <section className="section">
           <div className="container">
-            <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '2rem' }}>Meet the <span className="gradient-text">Team</span></h2>
-            <div className="grid-4">
+            <div className="section-center">
+              <span className="section-tag">The people</span>
+              <h2 className="section-title">Meet the team</h2>
+            </div>
+            <div className="about-team-grid">
               {TEAM.map((m) => (
-                <div key={m.name} className="card" style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '2.5rem', marginBottom: '0.6rem' }}>{m.emoji}</div>
-                  <h3 style={{ fontSize: '1rem', fontWeight: 700 }}>{m.name}</h3>
-                  <p style={{ fontSize: '0.8rem', color: 'var(--text2)', marginTop: '0.2rem' }}>{m.role}</p>
+                <div key={m.name} className="about-team-card">
+                  <div className="about-avatar">{m.initials}</div>
+                  <h3 className="about-team-name">{m.name}</h3>
+                  <p className="about-team-role">{m.role}</p>
                 </div>
               ))}
             </div>

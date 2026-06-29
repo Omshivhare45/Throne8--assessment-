@@ -1,0 +1,125 @@
+/* ─── Services list ───────────────────────── */
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.service-row {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 0;
+  padding: 1.75rem 2rem;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.18s;
+}
+
+.service-row:last-child {
+  border-bottom: none;
+}
+
+.service-row:hover {
+  background: var(--bg2);
+}
+
+/* ─── Number ──────────────────────────────── */
+
+.service-num {
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  color: var(--text3);
+  letter-spacing: 0.05em;
+  padding-top: 4px;
+  flex-shrink: 0;
+}
+
+/* ─── Body ────────────────────────────────── */
+
+.service-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.service-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.service-desc {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--text2);
+  max-width: 640px;
+}
+
+/* ─── Tags ────────────────────────────────── */
+
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+}
+
+.service-tag {
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.2rem 0.6rem;
+  border-radius: 5px;
+  background: var(--bg3);
+  color: var(--text3);
+  border: 1px solid var(--border);
+  letter-spacing: 0.01em;
+  transition: border-color 0.18s, color 0.18s;
+}
+
+.service-row:hover .service-tag {
+  border-color: var(--text3);
+  color: var(--text2);
+}
+
+/* ─── Bottom CTA ──────────────────────────── */
+
+.services-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding: 1.5rem 2rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg2);
+}
+
+.services-cta p {
+  font-size: 0.9rem;
+  color: var(--text2);
+}
+
+/* ─── Responsive ──────────────────────────── */
+
+@media (max-width: 700px) {
+  .service-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 1.25rem;
+  }
+
+  .service-num {
+    padding-top: 0;
+  }
+
+  .services-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.25rem;
+  }
+}

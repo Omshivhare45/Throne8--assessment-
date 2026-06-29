@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import api from '../../services/api'
 import './Home.css'
+import Hero from '../../components/home/Hero';
 
 const SERVICES = [
   { icon: '⚙️', title: 'Custom Software', desc: 'Enterprise apps, SaaS platforms, CRM & ERP built to scale.' },
@@ -56,13 +57,14 @@ const Home = () => {
   return (
     <>
       <Navbar />
+      <Hero />
       <main>
 
       
         <section className="hero">
           <div className="container">
             <div className="hero-content">
-              <span className="hero-tag">🚀 Premium Software Development</span>
+              <span className="hero-tag">Premium Software Development</span>
               <h1>We Build Digital Products<br /><span className="gradient-text">That Scale</span></h1>
               <p>From AI-powered apps to enterprise cloud infrastructure — end-to-end software for startups and enterprises worldwide.</p>
               <div className="hero-btns">
@@ -218,7 +220,7 @@ const Home = () => {
                 <h2 className="section-title" style={{ marginTop: '0.5rem' }}>Let's Build Something <span className="gradient-text">Great</span></h2>
                 <p className="section-sub" style={{ marginTop: '0.5rem' }}>Fill the form and we'll reply within 24 hours.</p>
                 <div className="contact-info">
-                  <p>✉️ <a href="mailto:hello@xyzcompany.com" style={{ color: 'var(--primary)' }}>hello@xyzcompany.com</a></p>
+                  <p>✉️ <a href="mailto:omshivhare666@gmail.com" style={{ color: 'var(--primary)' }}>omshivhare666@gmail.com</a></p>
                   <p>📞 <a href="tel:+919876543210" style={{ color: 'var(--primary)' }}>+91 98765 43210</a></p>
                   <p>📍 Bhopal, Madhya Pradesh, India</p>
                 </div>
