@@ -21,7 +21,7 @@ import AdminDashboard from './pages/admin/Dashboard';
 import AdminProjects from './pages/admin/Projects';
 import AdminLeads    from './pages/admin/Leads';
 import AdminBlogs    from './pages/admin/Blogs';
-import AdminCareers  from './pages/admin/Careers';
+import Admincareers  from './pages/admin/Admincareers';
 import AdminSettings from './pages/admin/Settings';
 
 function ProtectedRoute({ children }) {
@@ -61,10 +61,10 @@ function App() {
           }
         >
           <Route index            element={<AdminDashboard />} />
-          <Route path="blogs"     element={<AdminBlogs />} />
-          <Route path="projects"  element={<AdminProjects />} />
-          <Route path="leads"     element={<AdminLeads />} />
-          <Route path="careers"   element={<AdminCareers />} />
+          <Route path="/admin/blogs"     element={<AdminBlogs />} />
+          <Route path="/admin/projects"  element={<AdminProjects />} />
+          <Route path="/admin/leads"     element={<AdminLeads />} />
+          <Route path="/admin/careers"   element={<Admincareers />} />
           <Route path="settings"  element={<AdminSettings />} />
         </Route>
 
