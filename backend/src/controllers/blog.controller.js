@@ -88,7 +88,7 @@ const getBlogBySlug = async (req, res) => {
 
 const adminGetAllBlogs = async (req, res) => {
     try{
-        const blogd = await Blog.find()
+        const blogs = await Blog.find()
         .populate('author', 'name')
         .sort({ createdAt: -1 });
 
