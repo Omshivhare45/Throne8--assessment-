@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { FiMoon, FiSun } from 'react-icons/fi'
 import useThemeStore from '../store/themeStore'
+import logo from '../assets/logo.jpg'
 import './Navbar.css'
 
 const navLinks = [
@@ -30,7 +31,8 @@ const Navbar = () => {
       <div className="navbar-inner container">
 
         <NavLink to="/" className="navbar-logo">
-          Throne8<span className="navbar-dot" />
+          <img src={logo} alt="Throne8" className="navbar-logo-img" />
+          <span>Throne8</span>
         </NavLink>
 
         <ul className="navbar-links">

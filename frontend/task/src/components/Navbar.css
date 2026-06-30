@@ -162,3 +162,22 @@
   .navbar-inner { padding: 0 1.25rem; }
   .navbar-logo  { font-size: 1rem; }
 }
+
+.navbar-logo-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.navbar-logo span {
+  background: linear-gradient(135deg, #1e6fd9, #3b9eff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.navbar-dot {
+  display: none;
+}

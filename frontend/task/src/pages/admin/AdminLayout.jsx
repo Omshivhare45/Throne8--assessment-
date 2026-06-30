@@ -2,6 +2,7 @@ import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import { FiGrid, FiFileText, FiBriefcase, FiUsers, FiSettings, FiLogOut } from 'react-icons/fi'
 import useAuthStore from '../../store/authStore'
 import { logout } from '../../services/auth.api'
+import logo from '../../assets/logo.jpg'
 import './AdminLayout.css'
 
 const NAV_ITEMS = [
@@ -32,7 +33,8 @@ const AdminLayout = () => {
 
       <aside className="admin-sidebar">
         <div className="admin-sidebar-logo">
-          Throne<span>8</span>
+          <img src={logo} alt="Throne8" className="admin-sidebar-logo-img" />
+          <span>Throne<span className="admin-logo-accent">8</span></span>
         </div>
 
         <nav className="admin-nav">
