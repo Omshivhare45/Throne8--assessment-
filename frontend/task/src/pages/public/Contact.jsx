@@ -132,7 +132,7 @@ const Contact = () => {
                 <h3>Contact details</h3>
 
                 <a href="mailto:hello@xyzcompany.com" className="contact-info-row">
-                  <FiMail /> hello@xyzcompany.com
+                  <FiMail /> omshivhare666@gmail.com
                 </a>
 
                 <div className="contact-info-row">

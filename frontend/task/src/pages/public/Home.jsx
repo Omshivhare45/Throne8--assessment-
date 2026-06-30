@@ -221,7 +221,6 @@ const Home = () => {
                 <p className="section-sub" style={{ marginTop: '0.5rem' }}>Fill the form and we'll reply within 24 hours.</p>
                 <div className="contact-info">
                   <p>✉️ <a href="mailto:omshivhare666@gmail.com" style={{ color: 'var(--primary)' }}>omshivhare666@gmail.com</a></p>
-                  <p>📞 <a href="tel:+919876543210" style={{ color: 'var(--primary)' }}>+91 98765 43210</a></p>
                   <p>📍 Bhopal, Madhya Pradesh, India</p>
                 </div>
               </div>
