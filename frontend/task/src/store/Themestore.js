@@ -10,6 +10,6 @@ const useThemeStore = create((set) => ({
             document.documentElement.setAttribute('data-theme', next)
             return{ theme: next }
         })
-}))
+}))          
 
 export default useThemeStore;
