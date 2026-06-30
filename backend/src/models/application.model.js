@@ -12,7 +12,6 @@ const applicationSchema = new mongoose.Schema({
         trim: true
     },email:{
         type:String,
-        unique:true,
         lowercase:true,
         trim:true,
         match:[/^\S+@\S+\.\S+$/, 'Please enter a valid email'],
@@ -30,11 +29,17 @@ const applicationSchema = new mongoose.Schema({
     },linkedinUrl:{
         type:String,
         trim: true,
+    },coverLetter:{
+        type:String,
+        trim: true,
     },status:{
         type:String,
         enum:['received', 'reviewing', 'shortlisted', 'rejected', 'hired'],
         default: 'received',
     }
 },{timestamps: true});
+
+
+applicationSchema.index({ career: 1, email: 1 }, { unique: true });
 
 module.exports = mongoose.model("Application", applicationSchema);

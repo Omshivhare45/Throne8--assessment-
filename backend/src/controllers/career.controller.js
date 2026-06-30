@@ -79,10 +79,13 @@ const applyForCareer = async (req, res) => {
             if (duplicate) {
             return res.status(409).json({ message: 'You have already applied for this position' });
         }
+        console.log("Career ID:", req.params.id);
+    console.log("Request Body:", req.body);
 
         const application = await Application.create({
             career: career._id, name, email, phone, resumeUrl, coverLetter, portfolioUrl, linkedinUrl,
         });
+        console.log("Saved Application:", application);
 
         return res.status(201).json({ message: 'Application submitted successfully!', application });
     }catch(err){
@@ -131,7 +134,7 @@ const getApplicationsByCareer = async (req, res) => {
     const query = { career: req.params.id };
     if (status) query.status = status;
  
-    const applications = await Application.find(query).sort({ createdAt: -1 });
+    const applications = await Application.find(query).sort({ createdAt: -1 }).populate('career');
     return res.status(200).json({ applications });
   } catch (err) {
     return res.status(500).json({ message: 'Server error' });

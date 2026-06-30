@@ -1,0 +1,176 @@
+/* ─── Header ──────────────────────────────── */
+.admin-leads-head h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+}
+.admin-leads-head p {
+  color: var(--text2);
+  font-size: 0.875rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ─── Stats row ───────────────────────────── */
+.leads-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.leads-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1rem 1.2rem;
+}
+
+.leads-stat-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.leads-stat-label {
+  font-size: 0.78rem;
+  color: var(--text3);
+}
+
+/* ─── List ────────────────────────────────── */
+.admin-leads-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.admin-lead-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.admin-lead-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.4rem;
+  cursor: pointer;
+}
+
+.admin-lead-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.admin-lead-row-head {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.admin-lead-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.admin-lead-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-size: 0.8rem;
+  color: var(--text3);
+  flex-wrap: wrap;
+}
+.admin-lead-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.admin-lead-message-preview {
+  font-size: 0.83rem;
+  color: var(--text2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 520px;
+}
+
+.admin-lead-date {
+  font-size: 0.78rem;
+  color: var(--text3);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.admin-lead-expanded {
+  border-top: 1px solid var(--border);
+  padding: 1.1rem 1.4rem;
+  background: var(--bg2);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.admin-lead-full-message strong {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text3);
+}
+.admin-lead-full-message p {
+  font-size: 0.875rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin-top: 0.4rem;
+  white-space: pre-wrap;
+}
+
+.admin-lead-budget {
+  font-size: 0.8rem;
+  color: var(--text2);
+  margin-top: 0.5rem;
+}
+
+.admin-lead-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.admin-lead-note {
+  resize: vertical;
+  min-height: 70px;
+  font-family: inherit;
+}
+
+.admin-lead-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-lead-skeleton {
+  height: 96px;
+  border-radius: 10px;
+}
+
+
+@media (max-width: 700px) {
+  .leads-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .admin-lead-row {
+    flex-direction: column;
+  }
+  .admin-lead-message-preview {
+    max-width: 100%;
+  }
+}

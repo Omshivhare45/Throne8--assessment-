@@ -37,9 +37,17 @@ const Login = () => {
 
     setLoading(true)
     try {
-      const res = await login(formData)
-      setAuth(res.data.user, res.data.accessToken)
-      navigate('/admin')
+      const res = await login(formData);
+
+setAuth(res.data.user, res.data.accessToken);
+
+if (res.data.user.role !== "admin") {
+  alert("You are not an admin.");
+
+  return navigate("/");
+}
+
+navigate("/admin");
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed. Try again.')
     } finally {

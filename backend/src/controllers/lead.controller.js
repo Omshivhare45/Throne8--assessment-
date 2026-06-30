@@ -14,9 +14,9 @@ const submitContact = async (req, res) => {
       message:"Message Recieved"
     })
   }catch(err){
-    console.log("submit contact error : ", err);
+    console.error("submit contact error : ", err);
     return res.status(500).json({
-      mesage:"Internal server error"
+      message:"Internal server error"
     })
   }
 }
@@ -38,7 +38,7 @@ const submitConsultation = async (req,res) => {
       lead
     })
   }catch(err){
-    console.log("Consulation booking error : ", err)
+    console.error("Consulation booking error : ", err)
     return res.status(500).json({
       message:"Internal server error"
     })
@@ -71,7 +71,7 @@ const getAllLeads = async (req, res) => {
       },
     });
   }catch(err){
-    console.log("lead fetch error : ", err);
+    console.error("lead fetch error : ", err);
     return res.status(500).json({
       message:"Server error"
     })
@@ -92,7 +92,7 @@ const getLeadById = async (req, res) => {
     lead
 });
   }catch(err){
-    console.log("lead by id error : ", err);
+    console.error("lead by id error : ", err);
     return res.status(500).json({
       message:"Server error"
     });
@@ -102,10 +102,14 @@ const getLeadById = async (req, res) => {
 const updateLead = async (req, res) => {
   try{
     const { status, adminNote } = req.body;
-    const lead = await Lead.findByIdAndUpdate(req.params.id, {status, adminNote},{returnDocument: 'after'});
+    const lead = await Lead.findByIdAndUpdate(
+      req.params.id,
+      { status, adminNote },
+      { new: true, runValidators: true }
+    );
     if(!lead){
-      return res.status(200).json({
-        message:"lead not found"
+      return res.status(404).json({
+        message:"Lead not found"
       })
     }
     return res.status(200).json({
@@ -113,6 +117,7 @@ const updateLead = async (req, res) => {
     lead
 });
   }catch(err){
+    console.error("updateLead error : ", err);
     return res.status(500).json({
       message:"Server error"
     })
@@ -129,6 +134,7 @@ const deleteLead = async (req, res) => {
       message:"Lead deleted"
     })
   }catch(err){
+    console.error("deleteLead error : ", err);
     return res.status(500).json({
       message:"Server error"
     })

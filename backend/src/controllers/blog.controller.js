@@ -36,12 +36,12 @@ const getBlogBySlug = async (req, res) => {
         }).populate('author', 'name');
 
         if( !blog ){
-            return res.status(401).json({
+            return res.status(404).json({
                 mesage:"NO posts found"
             })
         }
 
-        blog.view += 1;
+        blog.views += 1;
         await blog.save();
         
         return res.status(200).json({
@@ -86,10 +86,73 @@ const getBlogBySlug = async (req, res) => {
         }
     }
 
-    
+const adminGetAllBlogs = async (req, res) => {
+    try{
+        const blogd = await Blog.find()
+        .populate('author', 'name')
+        .sort({ createdAt: -1 });
+
+        return res.status(200).json({ blogs });
+    }catch(err){
+        console.log("admin blog fetch error : ", err);
+        return res.status(500).json({ message:" Internal server error "});
+    }
+}
+
+const updateBlog = async ( req, res ) => {
+    try{
+        const blog= await Blog.findById(req.params.id);
+        if( !blog ){
+            return res.status(404).json({
+                message:"Blog not found"
+            });
+        }
+
+        const { title, content, thumbnail, tags, category, status } = req.body;
+        
+        if (title && title !== blog.title) {
+            const newSlug = slugify(title, { lower: true, strict: true });
+            const clash = await Blog.findOne({ slug: newSlug, _id: { $ne: blog._id } });
+                if (clash) return res.status(409).json({ message: 'A post with this title already exists' });
+                    blog.slug = newSlug;
+                    blog.title = title;
+        }
+
+        if (content)  blog.content = content;
+        if (thumbnail !== undefined) blog.thumbnail = thumbnail;
+        if (tags)     blog.tags = tags;
+        if (category) blog.category = category;
+
+        if( status && status !== blog.status ){
+            blog.status = status;
+            if( status === 'published' && !blog.publishedAt){
+                blog.publishedAt = new Date();
+            }
+        }
+
+        await blog.save();
+
+        return res.status(200).json({
+            message:"Blog updated", blog
+        });
+    }catch(err){
+        console.log("Blog update error : ", err)
+            return res.status(500).json({
+                message:"Server error"
+            });
+        
+    }
+}
+
+const deleteBlog = async (req, res) => {
+  try {
+    const blog = await Blog.findByIdAndDelete(req.params.id);
+    if (!blog) return res.status(404).json({ message: 'Blog not found' });
+    return res.status(200).json({ message: 'Blog deleted' });
+  } catch (err) {
+    return res.status(500).json({ message: 'Server error' });
+  }
+};
 
 
-
-
-
-module.exports = { getAllBlogs, getBlogBySlug, createBlog };
+module.exports = { getAllBlogs, getBlogBySlug, createBlog, adminGetAllBlogs, updateBlog, deleteBlog };

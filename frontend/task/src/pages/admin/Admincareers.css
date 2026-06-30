@@ -157,11 +157,69 @@
   color: var(--primary-h);
 }
 
+.admin-application-cover {
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+}
+.admin-application-cover summary {
+  cursor: pointer;
+  color: var(--text2);
+  font-weight: 500;
+}
+.admin-application-cover summary:hover {
+  color: var(--text);
+}
+.admin-application-cover p {
+  margin-top: 0.4rem;
+  color: var(--text2);
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
 .admin-application-status {
   width: auto;
   flex-shrink: 0;
   font-size: 0.8rem;
   padding: 0.4rem 0.7rem;
+}
+
+.admin-application-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.status-badge{
+    background:#f1f5f9;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+    text-transform:capitalize;
+}
+
+.approve-btn{
+    background:#22c55e;
+    color:#fff;
+    border:none;
+    padding:8px 14px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.reject-btn{
+    background:#ef4444;
+    color:#fff;
+    border:none;
+    padding:8px 14px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.approve-btn:disabled,
+.reject-btn:disabled{
+    opacity:.5;
+    cursor:not-allowed;
 }
 
 /* ─── Responsive ──────────────────────────── */

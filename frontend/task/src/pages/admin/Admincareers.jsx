@@ -40,8 +40,6 @@ const Careers = () => {
 
   const fetchCareers = () => {
     setLoading(true)
-    // Uses the admin-scoped endpoint so paused/closed postings show up too —
-    // the public /careers endpoint only ever returns status: 'open'.
     api.get('/careers/admin/all')
       .then(({ data }) => setCareers(data.careers || []))
       .catch(() => setError('Could not load job postings.'))
@@ -49,9 +47,10 @@ const Careers = () => {
   }
 
   useEffect(() => {
-    fetchCareers()
-  }, [])
+  fetchCareers();
+}, []);
 
+ 
   const filtered = careers.filter((c) => {
     if (statusFilter === 'All') return true
     return c.status === statusFilter.toLowerCase()
@@ -137,11 +136,18 @@ const Careers = () => {
   const openApplications = (career) => {
     setAppsFor(career)
     setAppsLoading(true)
+
     api.get(`/careers/${career._id}/applications`)
-      .then(({ data }) => setApplications(data.applications || []))
-      .catch(() => setApplications([]))
-      .finally(() => setAppsLoading(false))
-  }
+      .then(({ data }) => {
+        console.log("APPLICATIONS:", data); // <-- ADD THIS
+        setApplications(data.applications || []);
+      })
+      .catch((err) => {
+        console.log(err.response);
+        setApplications([]);
+      })
+      .finally(() => setAppsLoading(false));
+}
 
   const closeApplications = () => {
     setAppsFor(null)
@@ -390,16 +396,37 @@ const Careers = () => {
                         {app.portfolioUrl && <a href={app.portfolioUrl} target="_blank" rel="noreferrer">Portfolio</a>}
                         {app.linkedinUrl && <a href={app.linkedinUrl} target="_blank" rel="noreferrer">LinkedIn</a>}
                       </div>
-                    </div>
-                    <select
-                      className="input admin-application-status"
-                      value={app.status}
-                      onChange={(e) => updateAppStatus(app._id, e.target.value)}
-                    >
-                      {APP_STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
-                    </select>
-                  </div>
-                ))}
+                      {app.coverLetter && (
+                        <details className="admin-application-cover">
+                          <summary>Cover letter</summary>
+                          <p>{app.coverLetter}</p>
+                        </details>
+                      )}
+                      </div>
+                    <div className="admin-application-actions">
+
+                       <span className={`status-badge ${app.status}`}>
+                        {app.status}
+                      </span>
+
+                      <button
+                        className="approve-btn"
+                        onClick={() => updateAppStatus(app._id, "hired")}
+                        disabled={app.status === "hired"}
+                      >
+                      ✅ Approve
+                      </button>
+
+                      <button
+                      className="reject-btn"
+                      onClick={() => updateAppStatus(app._id, "rejected")}
+                      disabled={app.status === "rejected"}
+                      >
+                      ❌ Reject
+                      </button>
+                        </div>
+                      </div>
+                  ))}
               </div>
             )}
 
@@ -411,4 +438,4 @@ const Careers = () => {
   )
 }
 
-export default Careers
+export default Careers;
