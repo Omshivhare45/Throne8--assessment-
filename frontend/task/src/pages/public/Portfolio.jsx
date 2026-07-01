@@ -39,7 +39,6 @@ const Portfolio = () => {
         <section className="section">
           <div className="container">
 
-            {/* Filter tabs */}
             <div className="tabs">
               {INDUSTRIES.map((ind) => (
                 <button
@@ -52,7 +51,7 @@ const Portfolio = () => {
               ))}
             </div>
 
-            {/* Loading skeletons */}
+            
             {loading && (
               <div className="portfolio-grid">
                 {[1,2,3,4,5,6].map((n) => (

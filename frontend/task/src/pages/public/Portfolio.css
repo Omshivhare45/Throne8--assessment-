@@ -114,8 +114,8 @@
   border: 1px solid var(--primary);
 }
 .portfolio-link-primary:hover {
-  background: var(--primary-h);
-  border-color: var(--primary-h);
+  background: #1f1708;
+  border-color: #1f1708;
 }
 
 .portfolio-link-outline {
@@ -134,6 +134,16 @@
   border-radius: 10px;
 }
 
+.tab{
+  background: #8B5E3C;
+  color: #fff;
+}
+
+.tab.active{
+  background: #1f1708;
+  color: #fff;
+  border: 1px solid #1f1708;
+}
 
 
 @media (max-width: 960px) {
