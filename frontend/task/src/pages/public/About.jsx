@@ -22,7 +22,7 @@ const About = () => {
       <Navbar />
       <main className="page">
 
-        {/* Page header */}
+        
         <div className="page-hero">
           <div className="container">
             <span className="tag">Who we are</span>
@@ -31,7 +31,7 @@ const About = () => {
           </div>
         </div>
 
-        {/* Vision + Mission */}
+        
         <section className="section">
           <div className="container about-vm-grid">
             <div className="about-vm-card">

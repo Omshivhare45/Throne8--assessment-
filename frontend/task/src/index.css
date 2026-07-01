@@ -1,7 +1,11 @@
-/* ─── Google Font ─────────────────────────── */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* ─── Light mode tokens ───────────────────── */
+
+
+*{
+  scroll-behavior: smooth;
+}
 :root {
   --bg:        #f6f0e8;
   --bg2:       #ffffff;
@@ -19,7 +23,6 @@
   --shadow-lg: 0 8px 28px rgba(0,0,0,0.08);
 }
 
-/* ─── Dark mode tokens ────────────────────── */
 [data-theme="dark"] {
   --bg:        #0f0f0e;
   --bg2:       #181817;
@@ -32,7 +35,7 @@
   --shadow-lg: 0 8px 32px rgba(0,0,0,0.5);
 }
 
-/* ─── Reset ───────────────────────────────── */
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -42,7 +45,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -55,12 +58,12 @@ ul { list-style: none; }
 button { cursor: pointer; font-family: inherit; border: none; background: none; }
 img { max-width: 100%; display: block; }
 
-/* ─── Scrollbar ───────────────────────────── */
+
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
-/* ─── Layout ──────────────────────────────── */
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -73,7 +76,7 @@ img { max-width: 100%; display: block; }
   padding-top: 64px;
 }
 
-/* ─── Buttons ─────────────────────────────── */
+
 .btn {
   display: inline-flex;
   align-items: center;

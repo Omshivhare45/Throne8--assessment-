@@ -135,7 +135,6 @@
 }
 .tech-chip:hover { border-color: var(--text3); color: var(--text); }
 
-
 .process-list {
   max-width: 640px;
   margin: 0 auto;
