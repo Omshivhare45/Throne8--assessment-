@@ -109,9 +109,9 @@
 }
 
 .portfolio-link-primary {
-  background: var(--primary);
+  background: #8b5e3c;
   color: #fff;
-  border: 1px solid var(--primary);
+  border: 1px solid #8b5e3c;
 }
 .portfolio-link-primary:hover {
   background: #1f1708;
