@@ -6,7 +6,7 @@
   left: 0;
   width: 100%;
   height: 64px;
-  background: rgba(255, 255, 255, 0.9);
+  background: #665028;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
@@ -15,13 +15,13 @@
 }
 
 [data-theme="dark"] .navbar {
-  background: rgba(15, 15, 14, 0.9);
+  background: rgba(103, 103, 81, 0.9);
   border-bottom-color: var(--border);
 }
 
-/* scrolled — slightly more opaque */
+
 .navbar.navbar-scrolled {
-  background: rgba(255, 255, 255, 0.97);
+  background: #6b552b;
   box-shadow: var(--shadow);
 }
 
@@ -37,11 +37,10 @@
   gap: 1rem;
 }
 
-/* ─── Logo ────────────────────────────────── */
 .navbar-logo {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--text);
+  color: #CDB280;
   letter-spacing: -0.02em;
   cursor: pointer;
   user-select: none;
@@ -61,7 +60,7 @@
   display: inline-block;
 }
 
-/* ─── Desktop nav links — truly centered ─── */
+
 .navbar-links {
   display: flex;
   align-items: center;
@@ -74,8 +73,8 @@
 
 .nav-link {
   text-decoration: none;
-  color: var(--text2);
-  font-size: 0.85rem;
+  color: #E6D8BF;
+  font-size: 0.9rem;
   font-weight: 500;
   padding: 0.4rem 0.75rem;
   border-radius: 6px;
@@ -84,16 +83,16 @@
 
 .nav-link:hover {
   color: var(--text);
-  background: var(--bg3);
+  background: #EDE3D1;
 }
 
 .nav-link.nav-link-active,
 .nav-link.active {
-  color: var(--primary);
-  background: rgba(37, 99, 235, 0.08);
+  color: #1d1a15;
+  background: #EDE3D1;
 }
 
-/* ─── Right-side actions ──────────────────── */
+ 
 .navbar-actions {
   display: flex;
   align-items: center;
@@ -172,7 +171,7 @@
 }
 
 .navbar-logo span {
-  background: linear-gradient(135deg, #1e6fd9, #3b9eff);
+  background: linear-gradient(135deg, #b9a889, #d29a33);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

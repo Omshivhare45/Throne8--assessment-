@@ -3,10 +3,10 @@
 
 /* ─── Light mode tokens ───────────────────── */
 :root {
-  --bg:        #ffffff;
-  --bg2:       #f7f7f5;
-  --bg3:       #efefec;
-  --border:    #e4e4df;
+  --bg:        #f6f0e8;
+  --bg2:       #ffffff;
+  --bg3:       #ede3d6;
+  --border:    #392618;
   --text:      #111110;
   --text2:     #57574f;
   --text3:     #9a9a90;
@@ -66,6 +66,8 @@ img { max-width: 100%; display: block; }
   margin: 0 auto;
   padding: 0 2rem;
 }
+
+
 
 .page {
   padding-top: 64px;

@@ -1,4 +1,4 @@
-/* ─── Hero ────────────────────────────────── */
+
 
 .hero {
   min-height: calc(100vh - 64px);
@@ -10,22 +10,21 @@
   overflow: hidden;
 }
 
-/* subtle dot grid — light only */
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
-  background-size: 28px 28px;
-  pointer-events: none;
-  opacity: 0.6;
+.hero-image{
+  transition: transform 0.3s ease-in-out;
 }
+
+.hero-image:hover{
+  transform: rotate(5deg) scale(1.01);
+  cursor: pointer;
+}
+
 
 [data-theme="dark"] .hero::before {
   opacity: 0.3;
 }
 
-/* ─── Content column ──────────────────────── */
+
 .hero-content {
   flex: 1;
   max-width: 600px;
