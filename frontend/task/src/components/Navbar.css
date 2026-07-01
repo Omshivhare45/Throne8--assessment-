@@ -126,7 +126,7 @@
 .consult-btn {
   padding: 0.5rem 1rem;
   border-radius: 7px;
-  background: var(--primary);
+  background: #8B5E3C;
   color: #fff;
   font-weight: 500;
   font-size: 0.85rem;
@@ -136,7 +136,7 @@
 }
 
 .consult-btn:hover {
-  background: var(--primary-h);
+  background: #1f1708;
 }
 
 /* ─── Dark mode: theme button turns yellow ── */
